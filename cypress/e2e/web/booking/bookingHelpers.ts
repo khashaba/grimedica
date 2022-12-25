@@ -3,7 +3,11 @@ import { RecordEntry } from "../../../support/types/RecordEntry";
 import WebtablesPage from "../../../support/PageObjects/WebtablesPage";
 import AutomationPracticePage from "../../../support/pageObjects/AutomationPracticePage";
 
-export function addNewRecord(recordEntry: RecordEntry) {
+/**
+ * fill the users data for a new record
+ * @param {RecordEntry} recordEntry - the record to be filled
+ */
+export function fillNewRecord(recordEntry: RecordEntry) {
   WebtablesPage.firstNameField().type(recordEntry.firstName);
   WebtablesPage.lastNameField().type(recordEntry.lastName);
   WebtablesPage.userEmailField().type(recordEntry.email);
@@ -12,6 +16,10 @@ export function addNewRecord(recordEntry: RecordEntry) {
   WebtablesPage.departmentField().type(recordEntry.department);
 }
 
+/**
+ * fill the user's data in the form
+ * @param {User} user - the user to fill the form
+ */
 export function fillFormData(user: User) {
   AutomationPracticePage.firstNameField().type(user.firstName);
   AutomationPracticePage.lastNameField().type(user.lastName);
@@ -37,6 +45,10 @@ export function fillFormData(user: User) {
   AutomationPracticePage.cityField().type(`${user.city}{enter}`);
 }
 
+/**
+ * Verify the form data is the same as given
+ * @param {User} user - the user to use to verify the form data upon
+ */
 export function verifyFormData(user: User) {
   cy.contains(user.firstName);
   cy.contains(user.lastName);
